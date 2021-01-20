@@ -1,25 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {Global, css} from "@emotion/react";
+import {Dictionary} from "./components/Dictionary";
+import Store from './store'
 
-function App() {
+const store = new Store();
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Global
+        styles={css`
+          body {
+            background-color: #f2f2f7;
+        
+            #root {
+              padding-left: 15px;
+              padding-right: 15px;
+              position: relative;
+              display: flex;
+              flex-direction: column;
+              min-height: 100vh;
+            }
+          }
+      `}
+      />
+      <Dictionary store={store} />
+    </>
   );
 }
 
